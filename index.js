@@ -133,7 +133,7 @@ async function run() {
         app.get('/orders', async(req, res) => {
             const email = req.query.email;
             const query = {email: email}
-            console.log(query)
+            // console.log(query)
             const cursor = ordersCollection.find(query);
             const result = await cursor.toArray();
             res.json(result);
@@ -153,7 +153,7 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const result = await ordersCollection.updateOne(query, {
                 $set: {
-                    status: 'Shipping'
+                    status: 'Shipped'
                 }
             })
             res.send(result);
