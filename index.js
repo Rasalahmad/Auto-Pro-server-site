@@ -93,8 +93,7 @@ async function run() {
             const options = {upsert: true};
             const updateDoc = {$set: user};
             const result = await usersCollection.updateOne(filter, updateDoc, options);
-            // console.log(result)
-            // res.json(result);
+            res.json(result);
         });
 
         
@@ -109,31 +108,25 @@ async function run() {
             const filter = {email: user.email};
             const updateDoc = {$set: {role: 'admin'}};
             const result = await usersCollection.updateOne(filter, updateDoc);
-            // console.log(result)
             res.json(result);
         });
 
           app.delete('/deleteOrder/:id', async (req, res) => {
             const id = req.params.id;
-            // console.log(id)
             const query = { _id: ObjectId(id) };
             const result = await ordersCollection.deleteOne(query)
             res.json(result);
-            // console.log(result)
         })
           app.delete('/deleteProduct/:id', async (req, res) => {
             const id = req.params.id;
-            // console.log(id)
             const query = { _id: ObjectId(id) };
             const result = await carCollection.deleteOne(query)
             res.json(result);
-            // console.log(result)
         })
 
         app.get('/orders', async(req, res) => {
             const email = req.query.email;
             const query = {email: email}
-            // console.log(query)
             const cursor = ordersCollection.find(query);
             const result = await cursor.toArray();
             res.json(result);
