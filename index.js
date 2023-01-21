@@ -210,15 +210,15 @@ async function run() {
     });
 
     app.post("/success", async (req, res) => {
-      res.status(200).redirect("http://localhost:3000/success");
+      res.status(200).redirect("https://car-service-psi.vercel.app/success");
     });
 
     app.post("/fail", async (req, res) => {
-      res.status(200).redirect("http://localhost:3000/");
+      res.status(200).redirect("https://car-service-psi.vercel.app/");
     });
 
     app.post("/cancel", async (req, res) => {
-      res.status(200).redirect("http://localhost:3000/");
+      res.status(200).redirect("https://car-service-psi.vercel.app/");
     });
   } finally {
     //    await client.close()
